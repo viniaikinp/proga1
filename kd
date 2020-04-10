@@ -1,0 +1,26 @@
+#include <string>
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main()
+{
+ ifstream file("A.txt");
+ string str;
+ if (!file.fail())
+{
+ ofstream file2("B.txt");
+ while (!file.eof())
+{
+ int count = 0;
+ getline(file, str);
+ for(int i = 0; i < str.length(); i++) {
+ if(str[i] == ' ') { 
+ str.erase(i,1);
+ i--;
+ file2 << str << endl;
+}
+ file2.close();
+}
+ file.close();
+ return 0;
+}
